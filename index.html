@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDG 15: Life on Land in Andhra Pradesh</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary-color: #4CAF50; /* Green for nature */
+            --secondary-color: #2E7D32; /* Dark green */
+            --accent-color: #8BC34A; /* Light green */
+            --text-color: #1e293b;
+            --light-bg: #f8fafc;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--light-bg);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary-color);
+        }
+
+        .nav-container {
+            background: var(--gradient);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .nav-link:hover {
+            opacity: 0.8;
+        }
+
+        .hero {
+            background: var(--gradient);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: url('https://via.placeholder.com/1920x1080') center/cover;
+            opacity: 0.1;
+            animation: rotate 60s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .main-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .stat-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 3rem auto;
+        }
+
+        .timeline-item {
+            padding: 2rem;
+            background: var(--white);
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            position: relative;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .timeline-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            left: -40px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .challenge-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 1rem 0;
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--accent-color);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .challenge-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .highlight-box {
+            background: var(--light-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .highlight-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .icon-feature {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .icon-feature i {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--gradient);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            text-align: center;
+            margin-top: 1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="nav-container">
+        <nav class="nav">
+            <a href="#" class="nav-logo">AP Life on Land</a>
+            <div class="nav-links">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#statistics" class="nav-link">Statistics</a>
+                <a href="#initiatives" class="nav-link">Initiatives</a>
+                <a href="#implementation" class="nav-link">Implementation</a>
+                <a href="#challenges" class="nav-link">Challenges</a>
+                <a href="#digital" class="nav-link">Digital Solutions</a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content" data-aos="fade-up" data-aos-delay="100">
+            <h1 style="font-size: 3.5rem; margin-bottom: 1.5rem;">SDG 15: Life on Land</h1>
+            <h2 style="font-size: 2rem; margin-bottom: 2rem;">Protecting Biodiversity in Andhra Pradesh</h2>
+            <p style="font-size: 1.2rem;">Promoting sustainable land use and conserving ecosystems</p>
+            <a href="#about" class="btn" data-aos="fade-up" data-aos-delay="200">Explore More</a>
+        </div>
+    </section>
+
+    <!-- Rest of your content remains the same -->
+    <div class="main-content">
+        <!-- Key Statistics -->
+        <section class="section" id="statistics" data-aos="fade-up">
+            <h2 style="text-align: center; margin-bottom: 3rem;">Key Achievements</h2>
+            <div class="cards-grid">
+                <div class="stat-card" data-aos="zoom-in">
+                    <div class="stat-number">24%</div>
+                    <p>Forest Cover</p>
+                </div>
+                <div class="stat-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="stat-number">500+</div>
+                    <p>Protected Areas</p>
+                </div>
+                <div class="stat-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="stat-number">₹1,200Cr</div>
+                    <p>Invested in Conservation</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="section" id="about" data-aos="fade-up">
+            <h2>About Our Mission</h2>
+            <div class="highlight-box">
+                <p>Protecting and restoring ecosystems for sustainable development in Andhra Pradesh.</p>
+            </div>
+            <div class="icon-feature">
+                <i class="fas fa-tree"></i>
+                <div>
+                    <h3>Forest Conservation</h3>
+                    <p>Preserving and expanding forest cover</p>
+                </div>
+            </div>
+            <div class="icon-feature">
+                <i class="fas fa-paw"></i>
+                <div>
+                    <h3>Wildlife Protection</h3>
+                    <p>Safeguarding endangered species and habitats</p>
+                </div>
+            </div>
+        </section>
+
+        
+
+        <!-- Key Initiatives -->
+        <section class="section" id="initiatives" data-aos="fade-up">
+            <h2>Flagship Initiatives</h2>
+            <div class="cards-grid">
+                <div class="card" data-aos="fade-up">
+                    <h3>Green Andhra Pradesh</h3>
+                    <p>Massive afforestation and reforestation programs.</p>
+                    <a href="#" class="btn" target="_blank">Learn More</a>
+                </div>
+                <div class="card" data-aos="fade-up">
+                    <h3>Wildlife Corridors</h3>
+                    <p>Creating safe passages for wildlife migration.</p>
+                    <a href="#" class="btn" target="_blank">Learn More</a>
+                </div>
+                <div class="card" data-aos="fade-up">
+                    <h3>Soil Health Cards</h3>
+                    <p>Promoting sustainable land use practices.</p>
+                    <a href="#" class="btn" target="_blank">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Implementation Process -->
+        <section class="section" id="implementation" data-aos="fade-up">
+            <h2 style="text-align: center; margin-bottom: 3rem;">Implementation Process</h2>
+            <div class="timeline">
+                <div class="timeline-item" data-aos="fade-left">
+                    <h3>Phase 1: Assessment</h3>
+                    <p>• Mapping biodiversity hotspots</p>
+                    <p>• Identifying degraded lands</p>
+                    <p>• Community consultations</p>
+                </div>
+                <div class="timeline-item" data-aos="fade-left">
+                    <h3>Phase 2: Conservation</h3>
+                    <p>• Establishing protected areas</p>
+                    <p>• Afforestation drives</p>
+                    <p>• Wildlife protection programs</p>
+                </div>
+                <div class="timeline-item" data-aos="fade-left">
+                    <h3>Phase 3: Restoration</h3>
+                    <p>• Reforestation of degraded lands</p>
+                    <p>• Soil conservation measures</p>
+                    <p>• Sustainable agriculture practices</p>
+                </div>
+                <div class="timeline-item" data-aos="fade-left">
+                    <h3>Phase 4: Monitoring</h3>
+                    <p>• Regular biodiversity audits</p>
+                    <p>• Community feedback collection</p>
+                    <p>• Continuous improvement</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Challenges & Solutions -->
+        <section class="section" id="challenges" data-aos="fade-up">
+            <h2 style="text-align: center; margin-bottom: 3rem;">Implementation Challenges & Solutions</h2>
+            <div class="cards-grid">
+                <div class="challenge-card" data-aos="fade-up">
+                    <h3>Deforestation</h3>
+                    <p>Challenge: Loss of forest cover due to urbanization</p>
+                    <p>Solution: Strict enforcement of forest conservation laws</p>
+                </div>
+                <div class="challenge-card" data-aos="fade-up">
+                    <h3>Wildlife Conflict</h3>
+                    <p>Challenge: Human-wildlife conflicts</p>
+                    <p>Solution: Creating wildlife corridors and buffer zones</p>
+                </div>
+                <div class="challenge-card" data-aos="fade-up">
+                    <h3>Soil Degradation</h3>
+                    <p>Challenge: Declining soil health</p>
+                    <p>Solution: Promoting organic farming and soil conservation</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Digital Solutions -->
+        <section class="section" id="digital" data-aos="fade-up">
+            <h2>Digital Solutions for Conservation</h2>
+            <p>Leveraging technology for sustainable land management.</p>
+            <div class="cards-grid">
+                <div class="card" data-aos="fade-up">
+                    <h3>GIS Mapping</h3>
+                    <p>Using GIS for biodiversity mapping and monitoring.</p>
+                </div>
+                <div class="card" data-aos="fade-up">
+                    <h3>Drone Surveillance</h3>
+                    <p>Monitoring forests and wildlife using drones.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Success Metrics -->
+        <section class="section" data-aos="fade-up">
+            <h2 style="text-align: center; margin-bottom: 3rem;">Implementation Success Metrics</h2>
+            <div class="cards-grid">
+                <div class="stat-card" data-aos="zoom-in">
+                    <div class="stat-number">24%</div>
+                    <p>Forest Cover Increase</p>
+                </div>
+                <div class="stat-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="stat-number">50+</div>
+                    <p>Wildlife Sanctuaries</p>
+                </div>
+                <div class="stat-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="stat-number">1M+</div>
+                    <p>Trees Planted</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer style="background: var(--gradient); color: var(--white); padding: 3rem 2rem; margin-top: 3rem;">
+        <div class="main-content">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                <div>
+                    <h3>Contact Us</h3>
+                    <p>Name: B.Indu Priya </p>
+                    <p>RegNo: 21MIS1080</p>
+                </div>
+                <div>
+                    <h3>Quick Links</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><a href="#about" style="color: var(--white); text-decoration: none;">About</a></li>
+                        <li><a href="#statistics" style="color: var(--white); text-decoration: none;">Statistics</a></li>
+                        <li><a href="#initiatives" style="color: var(--white); text-decoration: none;">Initiatives</a></li>
+                        <li><a href="#implementation" style="color: var(--white); text-decoration: none;">Implementation</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Social Media</h3>
+                    <div style="display: flex; gap: 1rem;">
+                        <a href="#" style="color: var(--white);"><i class="fab fa-facebook"></i></a>
+                        <a href="#" style="color: var(--white);"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="color: var(--white);"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="color: var(--white);"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                <p>&copy; 2025 AP Life on Land. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+    </script>
+</body>
+</html>
